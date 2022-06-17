@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous" />
+
+    <title>8Commerce</title>
+</head>
+
+<body>
+    <%- include('component/navbar', {session: session}); %>
+
+    <div class="d-flex flex-column align-items-center" style="gap: 20px">
+        <form class="d-flex flex-row justify-content-center flex-wrap" style="gap: 20px" action="/" method="get">
+            <input class="form-control" type="text" placeholder="Search..." name="search" />
+
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="sortPrice" value="DESC" />
+                <label class="form-check-label" for="flexRadioDefault1">
+                    DESC
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="sortPrice" value="ASC" />
+                <label class="form-check-label" for="flexRadioDefault2">
+                    ASC
+                </label>
+            </div>
+
+            <input type="Submit" class="btn btn-primary" value="Search" />
+        </form>
+        <div class="text-center">
+            <% if (error) { %>
+            <div class="alert alert-danger" role="alert">
+                <%= error %>
+            </div>
+            <% } %>
+        </div>
+        <div class="d-flex flex-row justify-content-center flex-wrap" style="gap: 20px">
+            <%for(let datum of data){%>
+            <div class="card" style="width: 12rem">
+                <img src="<%=datum.imgUrl%>" class="card-img-top" alt="productImage" />
+                <div class="card-body">
+                    <h5 class="card-title"><%=datum.name%></h5>
+                    <p class="card-text"><%=datum.description%></p>
+                    <% if (session.currentUser) { %>
+                    <a href="/orders/<%=datum.id%>/<%= session.currentUser.id %>/order" class="btn btn-primary">Buy</a>
+                    <% } else { %>
+                    <a href="/users/login" class="btn btn-primary">Buy</a>
+                    <% } %>
+                    <br />
+                    <i><%=datum.formattedPrice%></i> <br />
+                    <a href="/stores/<%=datum.StoreId%>/products"><%=datum.Store.name%></a>
+                </div>
+            </div>
+            <%}%>
+            </div>
+        </div>
+    </body>
+</html>

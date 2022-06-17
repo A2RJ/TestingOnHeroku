@@ -1,0 +1,52 @@
+<%- include('../component/navbar', {session: session}); %>
+<% extend('../layout/index.ejs') %>
+
+<div class="container">
+    <div class="row mt-2 mb-2">
+        <div class="col-md-12">
+            <h1>Store name: <%= store.name %></h1>
+            <a href="/stores/edit">Edit Your Store</a>
+            <p>Total products <%= products.length %></p>
+            <p>Owner name: <%= store.User.name %></p>
+            <a href="/orders/<%= store.UserId %>/user">My Order</a> <br>
+            <a href="/orders/<%= store.UserId %>/seller">Buyer Order</a> <br>
+            <a href="/products/<%= store.id %>/create">
+                <button class="btn btn-primary">Add new product</button>
+            </a>
+        </div>
+        <div class="col-md-12 mt-2">
+            <form action="/products/<%= store.id %>" method="get">
+                <input type="text" class="form-control" id="search" name="search" placeholder="Search">
+                <button type="submit" class="btn btn-primary">Search</button>
+                <a href="/products/<%= store.id %>/create">
+                    <button class="btn btn-primary">Cancel</button>
+                </a>
+            </form>
+        </div>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Price</th>
+                <th scope="col">Stock</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% products.forEach((product, index) => { %>
+            <tr>
+                <th scope="row"><%= index + 1 %></th>
+                <td><%= product.name %></td>
+                <td><%= product.price %></td>
+                <td><%= product.stock %></td>
+                <td>
+                    <a href="/products/<%= product.id %>/edit" class="btn btn-primary">Edit</a>
+                    <a href="/products/<%= product.id %>/delete" class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete</a>
+                </td>
+            </tr>
+            <% }) %>
+        </tbody>
+    </table>
+</div>

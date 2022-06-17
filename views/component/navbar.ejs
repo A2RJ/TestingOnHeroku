@@ -1,0 +1,27 @@
+<nav class="navbar navbar-expand-lg bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/">8Commerce</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-link active" aria-current="page" href="/">Home</a>
+                <%if(!session.currentUser){%>
+                <a class="nav-link" href="/users/login">Login</a>
+                <a class="nav-link" href="/users/register">Register</a>
+                <%}else {%>
+                <%if(!session.currentUser.hasStore){%>
+                <a class="nav-link" href="/orders/<%= session.currentUser.id %>/user">My Order</a>
+                <a class="nav-link" href="/users/makeStore">Make Your Own Store</a>
+                <%}else{%>
+                <a class="nav-link" href="/products/<%= session.currentUser.Store.id %>">My Store</a>
+                <%}%>
+                <a class="nav-link" href="/users/edit">Edit Profile</a>
+                <a class="nav-link" href="/users/logout">LogOut</a> <%}%>
+            </div>
+        </div>
+    </div>
+</nav>
+<br /><br />

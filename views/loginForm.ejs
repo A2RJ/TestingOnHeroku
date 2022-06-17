@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Login</title>
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+            crossorigin="anonymous"
+        />
+    </head>
+    <body>
+        <%- include('component/navbar', {session: session}); %>
+        <%- include('component/error', {error}) %>
+
+        <div class="d-flex flex-column align-items-center">
+            <div class="card text-center" style="width:40%;">
+                <div class="card-header">Login</div>
+                <div class="card-body">
+                    <form method="post">
+                        <div class="mb-3>
+                            <label for="email" class="form-label"
+                                >Email address</label
+                            >
+                            <input
+                                type="email"
+                                class="form-control"
+                                name="email"
+                                placeholder="name@example.com"
+                            />
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label"
+                                >Password</label
+                            >
+                            <input
+                                type="password"
+                                class="form-control"
+                                name="password"
+                                placeholder
+                            />
+                        </div>
+
+                        <button class="btn btn-primary" type="submit">
+                            Login
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        
+    </body>
+</html>
