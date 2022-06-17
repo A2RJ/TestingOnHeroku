@@ -1,6 +1,6 @@
 {
     "production": {
-        "use_env_variable": "postgres://kzqdzegemhwxil:ebef77e1c7f00e1f06b275483fef28dcc5d1a8af71b24ae5cfffe849f4575c40@ec2-23-23-182-238.compute-1.amazonaws.com:5432/damlmd6jfcac1h",
+        "use_env_variable": "postgres://ixhvrqopgvmnim:d9afd00d932a8b2e1b0c46a6c52489ccd6cd81e12e171b74b0ae1ffcaac2884a@ec2-52-73-184-24.compute-1.amazonaws.com:5432/dedvq8lkden87a",
         "ssl": true,
         "dialect": "postgres",
         "protocol": "postgres",
